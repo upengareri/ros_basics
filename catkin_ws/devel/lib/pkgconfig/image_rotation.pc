@@ -1,0 +1,8 @@
+prefix=/home/ash/BMW-Sprints/LearningSprint/ImageRotation/ros_basics/catkin_ws/devel
+
+Name: image_rotation
+Description: Description of image_rotation
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ash/BMW-Sprints/LearningSprint/ImageRotation/ros_basics/catkin_ws/devel/lib 
+Requires: 
