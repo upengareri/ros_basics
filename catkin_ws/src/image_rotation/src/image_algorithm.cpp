@@ -3,7 +3,7 @@
 /// @brief Implementation of image processing algorithm
 ///
 
-#include "image_algorithm.h"
+#include "../include/image_rotation/image_algorithm.h"
 
 using namespace cv;
 
