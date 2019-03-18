@@ -204,5 +204,6 @@ add_executable(image_rotation_subscriber src/image_rotation_subscriber.cpp src/i
 find_package( OpenCV REQUIRED )
 target_link_libraries(image_rotation_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBS} )
 include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(include/image_rotation/)
 add_dependencies(image_rotation_subscriber image_rotation_generate_messages_cpp)
 
