@@ -8,6 +8,7 @@ project(image_rotation)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  OpenCV
   cv_bridge
   image_transport
   rosbag
@@ -193,10 +194,14 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_image_rotation.cpp)
-# if(TARGET ${PROJECT_NAME}-test)
-#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
-# endif()
+#catkin_add_gtest(testnew test/test_image_rotation.cpp)
+#if(TARGET ${PROJECT_NAME}-test)
+#  target_link_libraries(testnew image_rotation)
+#endif()
+
+add_executable(executeTest test/test_image_rotation.cpp src/image_algorithm.cpp)
+target_link_libraries(executeTest gtest pthread ${OpenCV_LIBS})
+
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
