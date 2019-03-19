@@ -14,7 +14,7 @@
 class ProcessorNode
 {
   public:
-    ProcessorNode(const std::string& topic);
+    ProcessorNode(const std::string& topic, const float&& rotation_angle);
     void ImageRotationCallBack(const sensor_msgs::ImageConstPtr& msg);
 
   private:
@@ -22,6 +22,6 @@ class ProcessorNode
     image_transport::ImageTransport image_transport_handle_;
     image_transport::Publisher  publisher_;
     image_transport::Subscriber subscriber_;
-    const std::string topic_;
+    const float rotation_angle_;
 };
 #endif //PROCESSOR_NODE_H

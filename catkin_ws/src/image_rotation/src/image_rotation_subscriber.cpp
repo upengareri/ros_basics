@@ -8,7 +8,7 @@
 int  main(int argc, char* argv[])
 { 
     ros::init(argc, argv, "ImageSubscriberNode");
-    ProcessorNode processor_node ("/sensors/camera/image_color");
+    ProcessorNode processor_node ("/sensors/camera/image_color",180.0f);
     ros::spin();
     return 0;
 }
