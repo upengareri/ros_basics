@@ -8,8 +8,9 @@ project(image_rotation)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 
+find_package( OpenCV REQUIRED )
+
 find_package(catkin REQUIRED COMPONENTS
-  OpenCV
   cv_bridge
   image_transport
   rosbag
