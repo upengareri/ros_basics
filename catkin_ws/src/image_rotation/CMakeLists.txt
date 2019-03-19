@@ -8,6 +8,7 @@ project(image_rotation)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  OpenCV
   cv_bridge
   image_transport
   rosbag
@@ -202,6 +203,11 @@ include_directories(
 # catkin_add_nosetests(test)
 add_executable(image_rotation_subscriber src/image_rotation_subscriber.cpp src/image_algorithm.cpp 
               src/processor_node.cpp) 
+
+add_executable(executeTest test/test_image_rotation.cpp src/image_algorithm.cpp)
+target_link_libraries(executeTest gtest pthread ${OpenCV_LIBS})
+add_test(NAME TestFixture COMMAND executeTest)
+
 find_package( OpenCV REQUIRED )
 target_link_libraries(image_rotation_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBS} )
 include_directories(${OpenCV_INCLUDE_DIRS})
