@@ -37,4 +37,3 @@ int main(int argc, char* argv[])
     bag.close();
     return 0;
 }
-
