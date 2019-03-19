@@ -7,7 +7,9 @@ project(image_rotation)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
+
 find_package(catkin REQUIRED COMPONENTS
+  OpenCV
   cv_bridge
   image_transport
   rosbag
@@ -123,6 +125,10 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+include_directories(include/)
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/image_rotation.cpp
@@ -133,10 +139,17 @@ include_directories(
 ## either from message generation or dynamic reconfigure
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
+#add_dependencies(image_rotation_subscriber image_rotation_generate_messages_cpp)
+
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/image_rotation_node.cpp)
+
+add_executable(image_rotation_subscriber src/image_rotation_subscriber.cpp src/image_algorithm.cpp 
+              src/processor_node.cpp)
+
+add_executable(image_rotation_publisher src/image_rotation_publisher.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -152,6 +165,9 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+target_link_libraries(image_rotation_publisher ${catkin_LIBRARIES} ${OpenCV_LIBS} )
+target_link_libraries(image_rotation_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBS} )
 
 #############
 ## Install ##
@@ -200,11 +216,11 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-add_executable(image_rotation_subscriber src/image_rotation_subscriber.cpp src/image_algorithm.cpp 
-              src/processor_node.cpp) 
-find_package( OpenCV REQUIRED )
-target_link_libraries(image_rotation_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBS} )
-include_directories(${OpenCV_INCLUDE_DIRS})
-include_directories(include/)
-add_dependencies(image_rotation_subscriber image_rotation_generate_messages_cpp)
+#add_executable(image_rotation_subscriber src/image_rotation_subscriber.cpp src/image_algorithm.cpp 
+#              src/processor_node.cpp) 
+#find_package( OpenCV REQUIRED )
+#target_link_libraries(image_rotation_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBS} )
+#include_directories(${OpenCV_INCLUDE_DIRS})
+#include_directories(include/)
+#add_dependencies(image_rotation_subscriber image_rotation_generate_messages_cpp)
 
