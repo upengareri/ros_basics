@@ -1,2 +1,0 @@
-
--DCATKIN_DEVEL_PREFIX=/home/ash/BMW-Sprints/LearningSprint/ImageRotation/ros_basics/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ash/BMW-Sprints/LearningSprint/ImageRotation/ros_basics/catkin_ws/install -G Unix Makefiles
