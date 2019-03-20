@@ -3,4 +3,3 @@
   <node name="image_rotation_publisher" pkg="project1" type="image_rotation_publisher" />
   <node name="rviz" pkg="rviz" type="rviz" />
 </launch>
-
