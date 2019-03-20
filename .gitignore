@@ -1,0 +1,8 @@
+## Catkin generated build files ##
+build/
+devel/
+bin/
+lib/
+
+## Visual Studio Code configuration files ## 
+.vscode/
