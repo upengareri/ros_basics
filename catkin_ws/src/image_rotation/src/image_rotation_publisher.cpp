@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
 
     while (image_publisher_handler.ok()) 
     {
-      for(rosbag::MessageInstance const message: rosbag::View(bag))
+      for(rosbag::MessageInstance const message: rosbag::View(bag,rosbag::TopicQuery("/sensors/camera/image_color")))
       {
         msg_image = message.instantiate<sensor_msgs::Image>();
         image_transport::Publisher publisher = image_transport.advertise("/sensors/camera/image_color", 1);
