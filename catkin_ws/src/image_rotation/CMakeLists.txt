@@ -11,6 +11,7 @@ project(image_rotation)
 find_package( OpenCV REQUIRED )
 
 find_package(catkin REQUIRED COMPONENTS
+  OpenCV
   cv_bridge
   image_transport
   rosbag
@@ -217,11 +218,17 @@ target_link_libraries(image_rotation_subscriber ${catkin_LIBRARIES} ${OpenCV_LIB
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-#add_executable(image_rotation_subscriber src/image_rotation_subscriber.cpp src/image_algorithm.cpp 
-#              src/processor_node.cpp) 
-#find_package( OpenCV REQUIRED )
-#target_link_libraries(image_rotation_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBS} )
-#include_directories(${OpenCV_INCLUDE_DIRS})
-#include_directories(include/)
-#add_dependencies(image_rotation_subscriber image_rotation_generate_messages_cpp)
+
+add_executable(image_rotation_subscriber src/image_rotation_subscriber.cpp src/image_algorithm.cpp 
+              src/processor_node.cpp) 
+
+add_executable(executeTest test/test_image_rotation.cpp src/image_algorithm.cpp)
+target_link_libraries(executeTest gtest pthread ${OpenCV_LIBS})
+add_test(NAME TestFixture COMMAND executeTest)
+
+find_package( OpenCV REQUIRED )
+target_link_libraries(image_rotation_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBS} )
+include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(include/)
+add_dependencies(image_rotation_subscriber image_rotation_generate_messages_cpp)
 
