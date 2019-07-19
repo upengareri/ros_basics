@@ -1,7 +1,7 @@
 ///
 /// @file
 /// @brief Declaration of the ProcessorNode class
-///
+/// @author Isaac Newton
 
 #ifndef PROCESSOR_NODE_H
 #define PROCESSOR_NODE_H
